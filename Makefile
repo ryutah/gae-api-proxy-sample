@@ -10,6 +10,6 @@ help: ## Print this help
 
 serve: ## Start local server
 	PORT=8081 go run ./backend/main.go &
-	PORT=8082 TARGET_HOST=localhost:8081 TARGET_SCHEMA=http go run ./nat/main.go &
+	PORT=8082 TARGET_HOST=localhost:8081 TARGET_SCHEMA=http go run ./proxy/main.go &
 	trap "kill %1 && kill %2" 1 2 3 15
 	PORT=8080 BACKEND_HOST=localhost:8082 BACKEND_SCHEMA=http go run ./front/main.go
